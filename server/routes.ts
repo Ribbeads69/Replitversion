@@ -136,32 +136,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         headers.forEach((header, index) => {
           const value = values[index] || "";
-          switch (header) {
+          const cleanHeader = header.replace(/"/g, '').toLowerCase();
+          switch (cleanHeader) {
             case 'first_name':
             case 'firstname':
-              contact.firstName = value;
+            case 'first name':
+              contact.firstName = value.replace(/"/g, '');
               break;
             case 'last_name':
             case 'lastname':
-              contact.lastName = value;
+            case 'last name':
+              contact.lastName = value.replace(/"/g, '');
               break;
             case 'email':
-              contact.email = value;
+            case 'email_address':
+              contact.email = value.replace(/"/g, '');
               break;
             case 'company':
-              contact.company = value;
+            case 'organization':
+              contact.company = value.replace(/"/g, '');
               break;
             case 'position':
             case 'title':
-              contact.position = value;
+            case 'job_title':
+              contact.position = value.replace(/"/g, '');
               break;
             case 'phone':
-              contact.phone = value;
+            case 'phone_number':
+              contact.phone = value.replace(/"/g, '');
               break;
           }
         });
 
-        if (contact.email) {
+        if (contact.email && contact.firstName && contact.lastName) {
           contacts.push(contact);
         }
       }

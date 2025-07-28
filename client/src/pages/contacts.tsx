@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import { MoreHorizontal, Upload, UserPlus, Search, Users } from "lucide-react";
+import { Edit, Trash2, Upload, UserPlus, Search, Users } from "lucide-react";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import ContactImportDialog from "@/components/contact-import-dialog";
@@ -28,15 +28,16 @@ export default function Contacts() {
     mutationFn: (id: string) => apiRequest("DELETE", `/api/contacts/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/contacts"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/dashboard/metrics"] });
       toast({
-        title: "Success",
-        description: "Contact deleted successfully",
+        title: "Target Eliminated",
+        description: "Contact removed from database",
       });
     },
     onError: () => {
       toast({
-        title: "Error",
-        description: "Failed to delete contact",
+        title: "Operation Failed",
+        description: "Failed to eliminate contact",
         variant: "destructive",
       });
     },
@@ -199,14 +200,30 @@ export default function Contacts() {
                           }
                         </TableCell>
                         <TableCell>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="text-slate-400 hover:text-slate-200"
-                            onClick={() => deleteContactMutation.mutate(contact.id)}
-                          >
-                            <MoreHorizontal className="w-4 h-4" />
-                          </Button>
+                          <div className="flex space-x-1">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-slate-400 hover:text-blue-400"
+                              onClick={() => {
+                                // TODO: Implement edit contact
+                                toast({
+                                  title: "Coming Soon",
+                                  description: "Contact editing will be available soon",
+                                });
+                              }}
+                            >
+                              <Edit className="w-4 h-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-slate-400 hover:text-red-400"
+                              onClick={() => deleteContactMutation.mutate(contact.id)}
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          </div>
                         </TableCell>
                       </TableRow>
                     ))}

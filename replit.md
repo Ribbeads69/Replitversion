@@ -1,12 +1,15 @@
-# OutreachPro - Email Campaign Management System
+# Sniper App - Tactical Email Operation System
 
 ## Overview
 
-OutreachPro is a comprehensive email campaign management system built with a modern full-stack architecture. The application enables users to manage contacts, create email templates, build automated sequences, and launch targeted email campaigns. It features a dark-themed interface with comprehensive dashboard analytics and real-time campaign monitoring.
+Sniper App is a tactical email campaign management system built with a CIA/Navy SEAL aesthetic and modern full-stack architecture. The application enables operators to manage target databases, create communication templates, build automated operation sequences, and launch precision email campaigns. It features a dark military-themed interface with real-time operational intelligence and campaign monitoring.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design aesthetic: Military/CIA/Navy SEAL operator theme - "feel like a savage"
+Font preference: Calibri size 11pt for text editing
+Branding: "Sniper App" with tactical terminology throughout
 
 ## System Architecture
 
@@ -43,11 +46,11 @@ Preferred communication style: Simple, everyday language.
 - Comprehensive error handling and request logging
 
 #### Frontend Pages
-- **Dashboard**: Real-time metrics and activity overview
-- **Contacts**: Contact management with bulk import capabilities
-- **Templates**: Rich email template editor with preview
-- **Sequences**: Visual sequence builder with step management
-- **Campaigns**: Campaign creation and monitoring
+- **Mission Control**: Real-time operational metrics and activity overview
+- **Target Database**: Contact management with bulk import capabilities
+- **Communication Arsenal**: Rich email template editor with preview and subject line variables
+- **Operation Sequences**: Visual sequence builder with extended wait time options
+- **Active Operations**: Campaign creation and monitoring with military terminology
 
 ## Data Flow
 
@@ -94,3 +97,18 @@ Preferred communication style: Simple, everyday language.
 - Support for both development and production database instances
 
 The application follows a monorepo structure with clear separation between client, server, and shared code. The shared directory contains database schemas and TypeScript types used across both frontend and backend, ensuring type safety throughout the application.
+
+## Recent Changes (January 2025)
+
+✓ Rebranded from "OutreachPro" to "Sniper App" with military/CIA aesthetic
+✓ Updated color scheme to dark theme with red accents (primary: hsl(0, 84%, 60%))
+✓ Changed navigation terminology: Dashboard→Mission Control, Contacts→Targets, etc.
+✓ Implemented Calibri 11pt font for text editing areas
+✓ Fixed dashboard metrics sync with real-time contact count updates
+✓ Enhanced contact actions with separate edit/delete buttons (military-themed messages)
+✓ Improved CSV import to handle first/last names with better column mapping
+✓ Added subject line variable insertion in template editor
+✓ Extended sequence wait time options (1-30 days, weeks, months)
+✓ Fixed sequence "Save Draft" functionality
+✓ Created clickable email setup dialog for operator profile configuration
+✓ Applied tactical terminology throughout UI (targets, operations, engagement rates)

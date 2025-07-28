@@ -225,14 +225,25 @@ Best,
   }
 
   async deleteContact(id: string): Promise<boolean> {
-    return this.contacts.delete(id);
+    const deleted = this.contacts.delete(id);
+    // Also remove from any campaign contacts
+    for (const [ccId, cc] of this.campaignContacts.entries()) {
+      if (cc.contactId === id) {
+        this.campaignContacts.delete(ccId);
+      }
+    }
+    return deleted;
   }
 
   async createContactsBulk(contacts: InsertContact[]): Promise<Contact[]> {
     const created: Contact[] = [];
     for (const contact of contacts) {
-      const newContact = await this.createContact(contact);
-      created.push(newContact);
+      // Check if email already exists
+      const existing = await this.getContactByEmail(contact.email);
+      if (!existing) {
+        const newContact = await this.createContact(contact);
+        created.push(newContact);
+      }
     }
     return created;
   }

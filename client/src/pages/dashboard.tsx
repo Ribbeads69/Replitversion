@@ -45,13 +45,13 @@ export default function Dashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-400 text-sm font-medium">Total Contacts</p>
+                <p className="text-slate-400 text-sm font-medium">Target Database</p>
                 <p className="text-2xl font-bold text-slate-100 mt-1">
                   {metrics?.totalContacts.toLocaleString() || 0}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-blue-500" />
+              <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center">
+                <Users className="w-6 h-6 text-red-500" />
               </div>
             </div>
             <div className="flex items-center mt-3">
@@ -65,13 +65,13 @@ export default function Dashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-400 text-sm font-medium">Active Campaigns</p>
+                <p className="text-slate-400 text-sm font-medium">Active Operations</p>
                 <p className="text-2xl font-bold text-slate-100 mt-1">
                   {metrics?.activeCampaigns || 0}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center">
-                <Zap className="w-6 h-6 text-primary-500" />
+              <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                <Zap className="w-6 h-6 text-green-500" />
               </div>
             </div>
             <div className="flex items-center mt-3">
@@ -85,13 +85,13 @@ export default function Dashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-400 text-sm font-medium">Open Rate</p>
+                <p className="text-slate-400 text-sm font-medium">Engagement Rate</p>
                 <p className="text-2xl font-bold text-slate-100 mt-1">
                   {metrics ? formatPercentage(metrics.openRate) : "0.0%"}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
-                <Mail className="w-6 h-6 text-green-500" />
+              <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                <Mail className="w-6 h-6 text-purple-500" />
               </div>
             </div>
             <div className="flex items-center mt-3">
@@ -105,13 +105,13 @@ export default function Dashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-400 text-sm font-medium">Reply Rate</p>
+                <p className="text-slate-400 text-sm font-medium">Response Rate</p>
                 <p className="text-2xl font-bold text-slate-100 mt-1">
                   {metrics ? formatPercentage(metrics.replyRate) : "0.0%"}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                <MessageCircle className="w-6 h-6 text-purple-500" />
+              <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                <MessageCircle className="w-6 h-6 text-orange-500" />
               </div>
             </div>
             <div className="flex items-center mt-3">

@@ -286,14 +286,32 @@ export default function SequenceBuilder({ sequence, open, onOpenChange, onClose 
                               <SelectItem value="1" className="text-slate-100 focus:bg-slate-600">
                                 Wait 1 day
                               </SelectItem>
+                              <SelectItem value="2" className="text-slate-100 focus:bg-slate-600">
+                                Wait 2 days
+                              </SelectItem>
                               <SelectItem value="3" className="text-slate-100 focus:bg-slate-600">
                                 Wait 3 days
+                              </SelectItem>
+                              <SelectItem value="4" className="text-slate-100 focus:bg-slate-600">
+                                Wait 4 days
+                              </SelectItem>
+                              <SelectItem value="5" className="text-slate-100 focus:bg-slate-600">
+                                Wait 5 days
                               </SelectItem>
                               <SelectItem value="7" className="text-slate-100 focus:bg-slate-600">
                                 Wait 1 week
                               </SelectItem>
+                              <SelectItem value="10" className="text-slate-100 focus:bg-slate-600">
+                                Wait 10 days
+                              </SelectItem>
                               <SelectItem value="14" className="text-slate-100 focus:bg-slate-600">
                                 Wait 2 weeks
+                              </SelectItem>
+                              <SelectItem value="21" className="text-slate-100 focus:bg-slate-600">
+                                Wait 3 weeks
+                              </SelectItem>
+                              <SelectItem value="30" className="text-slate-100 focus:bg-slate-600">
+                                Wait 1 month
                               </SelectItem>
                             </SelectContent>
                           </Select>
@@ -318,6 +336,15 @@ export default function SequenceBuilder({ sequence, open, onOpenChange, onClose 
                 type="button"
                 variant="outline"
                 className="bg-slate-700 hover:bg-slate-600 text-slate-300 border-slate-600"
+                onClick={() => {
+                  const formData = { ...form.getValues(), steps };
+                  if (sequence) {
+                    updateSequenceMutation.mutate({ ...formData, isActive: false });
+                  } else {
+                    createSequenceMutation.mutate({ ...formData, isActive: false });
+                  }
+                }}
+                disabled={isPending}
               >
                 Save Draft
               </Button>

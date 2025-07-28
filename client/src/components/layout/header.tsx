@@ -4,24 +4,24 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const pageConfig = {
   "/": {
-    title: "Dashboard",
-    subtitle: "Monitor your email outreach performance",
+    title: "Mission Control",
+    subtitle: "Real-time operational intelligence and target metrics",
   },
   "/contacts": {
-    title: "Contact Management",
-    subtitle: "Manage your contact lists and import new prospects",
+    title: "Target Database",
+    subtitle: "Manage contact lists and import new targets",
   },
   "/templates": {
-    title: "Email Templates",
-    subtitle: "Create and manage your email templates",
+    title: "Communication Arsenal",
+    subtitle: "Craft and deploy persuasive message templates",
   },
   "/sequences": {
-    title: "Email Sequences",
-    subtitle: "Build automated email sequences and follow-ups",
+    title: "Operation Sequences",
+    subtitle: "Build automated multi-stage engagement protocols",
   },
   "/campaigns": {
-    title: "Campaign Management",
-    subtitle: "Launch and monitor your email campaigns",
+    title: "Active Operations",
+    subtitle: "Deploy and monitor live engagement campaigns",
   },
 };
 
@@ -38,13 +38,13 @@ export default function Header() {
         </div>
         <div className="flex items-center space-x-4">
           {location === "/" && (
-            <Button className="bg-primary-500 hover:bg-primary-600">
-              New Campaign
+            <Button className="bg-red-600 hover:bg-red-700 text-white">
+              Deploy Operation
             </Button>
           )}
           <Avatar className="w-8 h-8">
-            <AvatarFallback className="bg-slate-600 text-slate-200">
-              JD
+            <AvatarFallback className="bg-red-600 text-white">
+              OPR
             </AvatarFallback>
           </Avatar>
         </div>

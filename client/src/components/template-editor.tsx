@@ -111,10 +111,10 @@ export default function TemplateEditor({ template, open, onOpenChange, onClose }
     }
   };
 
-  const insertVariable = (variable: string) => {
-    const bodyValue = form.getValues("body");
-    const newBody = bodyValue + `{{${variable}}}`;
-    form.setValue("body", newBody);
+  const insertVariable = (variable: string, field: 'body' | 'subject' = 'body') => {
+    const currentValue = form.getValues(field);
+    const newValue = currentValue + `{{${variable}}}`;
+    form.setValue(field, newValue);
   };
 
   const previewBody = form.watch("body")
@@ -174,23 +174,41 @@ export default function TemplateEditor({ template, open, onOpenChange, onClose }
                   )}
                 />
 
-                <FormField
-                  control={form.control}
-                  name="subject"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-slate-300">Subject Line</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          className="bg-slate-700 border-slate-600 text-slate-100"
-                          placeholder="Quick question about {{company_name}}"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div>
+                  <FormField
+                    control={form.control}
+                    name="subject"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-slate-300">Subject Line</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            className="bg-slate-700 border-slate-600 text-slate-100"
+                            placeholder="Quick question about {{company_name}}"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <div className="mt-2">
+                    <div className="flex flex-wrap gap-1">
+                      {["first_name", "last_name", "company_name", "sender_name"].map((variable) => (
+                        <Button
+                          key={variable}
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          className="bg-slate-700 hover:bg-slate-600 text-slate-300 border-slate-600 text-xs px-2 py-1 h-auto"
+                          onClick={() => insertVariable(variable, 'subject')}
+                        >
+                          {variable}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
                 <div>
                   <Label className="text-slate-300 text-sm font-medium">Variables</Label>
@@ -283,6 +301,7 @@ export default function TemplateEditor({ template, open, onOpenChange, onClose }
                             <Textarea
                               {...field}
                               className="w-full min-h-[200px] bg-slate-700 text-slate-100 border-0 resize-none focus:ring-0 focus:outline-none"
+                              style={{ fontFamily: 'Calibri, sans-serif', fontSize: '11pt' }}
                               placeholder="Hi {{first_name}},
 
 I noticed {{company_name}} is working on some exciting projects. I'd love to show you how our platform has helped similar companies increase their conversion rates by 25%.
