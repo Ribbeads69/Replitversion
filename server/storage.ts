@@ -456,6 +456,6 @@ Best,
 
 import { SupabaseStorage } from './supabase-storage';
 
-export const storage = process.env.NODE_ENV === 'production' 
+export const storage = (process.env.NODE_ENV === 'production' || process.env.SUPABASE_URL) 
   ? new SupabaseStorage() 
   : new MemStorage();
